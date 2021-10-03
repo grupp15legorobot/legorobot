@@ -6,19 +6,18 @@
 #define MOTOR_LEFT    OUTB
 #define MOTOR_C    OUTC
 #define MOTOR_D    OUTD
-#define SENSOR_TOUCHIN1
-#define SENSOR_2IN2
-#define SENSOR_3IN3
-#define SENSOR_4IN4
+#define SENSOR_TOUCH IN1
+#define SENSOR_2 IN2
+#define SENSOR_3 IN3
+#define SENSOR_4 IN4
 #define MOTOR_BOTH     ( MOTOR_LEFT | MOTOR_RIGHT ) /* Bitvis ELLER ger att båda motorerna styrs samtidigt */
-int max_hastighet;         /* variabel för max hastighet på motorn */
-POOL_T touchSensor;
+int max_hastighet;         /* variabel för max hastighet på motorn */ 
+POOL_T touch_sensor;
 POOL_T sonic_sensor;
 void move_back();
 void move_straight();
 void move_right();
 void move_left();  
-
 
 int main( void )
 {  
@@ -41,8 +40,8 @@ int main( void )
 	int us_distance;
 	us_distance = (sensor_get_value(0, sonic_sensor, 0))/10; 
   
-  touchSensor = sensor_search( LEGO_EV3_TOUCH ); // Registrerar en touch sensorpå touchSensor-variabeln
-  touch_set_mode_touch(touchSensor); // anger vilken "mode" sensorn skall ha
+  touch_sensor = sensor_search( LEGO_EV3_TOUCH ); // Registrerar en touch sensorpå touchSensor-variabeln
+  touch_set_mode_touch(touch_sensor); // anger vilken "mode" sensorn skall ha
   move_straight();
   Sleep( 1000 );
         
@@ -62,7 +61,9 @@ int main( void )
   tacho_stop( MOTOR_RIGHT );
   brick_uninit();
   printf( "dying...\n" );    
-        
+
+  move_straight();
+  while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen körastacho_stop( MOTOR_BOTH );
   return (0);
 }
 
