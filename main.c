@@ -63,7 +63,8 @@ int main( void )
   printf( "dying...\n" );    
 
   move_straight();
-  while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen körastacho_stop( MOTOR_BOTH );
+  while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
+  tacho_stop( MOTOR_BOTH );
   return (0);
 }
 
@@ -86,9 +87,3 @@ void move_back(){
   tacho_set_speed_sp( MOTOR_BOTH, max_hastighet * -0.1 );
   tacho_run_forever( MOTOR_BOTH ); 
 }
-
-
-/* hittar var sensorn är inkopplad, ska vara innan koden */
-
-
-/* ska vara i koden  kanske i en loop så det hela tiden uppdateras */
