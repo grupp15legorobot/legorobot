@@ -58,7 +58,6 @@ int main( void )
   move_back();
   tacho_stop( MOTOR_BOTH );
           
-  tacho_stop( MOTOR_RIGHT );
   brick_uninit();
   printf( "dying...\n" );    
 
