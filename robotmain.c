@@ -60,6 +60,8 @@ int main( void )
   move_straight();
   while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
   move_back();
+        
+  Sleep( 4000 );
   tacho_stop( MOTOR_BOTH );
   return (0);
 }
