@@ -62,7 +62,7 @@ int main( void )
   move_straight();
 
   printf( "dyinfsdsg...\n" );    
-  us_set_mode_us_dist_cm(sonic_sensor);
+  us_set_mode_us_dist_cm(LEGO_EV3_US);
 	int us_distance; /* kan heta vad som helst */
   us_distance = (sensor_get_value0(LEGO_EV3_US, 0));
   printf("%d",us_distance);
