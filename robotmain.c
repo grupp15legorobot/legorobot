@@ -60,6 +60,8 @@ int main( void )
  
  */ 
   move_straight();
+
+  printf( "dyinfsdsg...\n" );    
   us_set_mode_us_dist_cm(sonic_sensor);
 	int us_distance; /* kan heta vad som helst */
   us_distance = (sensor_get_value(0, sonic_sensor, 0));
