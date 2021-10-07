@@ -39,6 +39,7 @@ int main( void )
 	sonic_sensor = sensor_search(LEGO_EV3_US);
   
   touch_set_mode_touch(touch_sensor); // anger vilken "mode" sensorn skall ha
+  /* 
   move_straight();
   Sleep( 1000 );
         
@@ -57,7 +58,7 @@ int main( void )
         
   tacho_stop( MOTOR_RIGHT );
  
-
+ */ 
   move_straight();
   us_set_mode_us_dist_cm(sonic_sensor);
 	int us_distance; /* kan heta vad som helst */
