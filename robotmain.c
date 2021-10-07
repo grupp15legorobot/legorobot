@@ -98,7 +98,5 @@ void move_straight(){
   tacho_run_forever( MOTOR_BOTH ); 
 }
 
-void move_back(){
-  tacho_set_speed_sp( MOTOR_BOTH, max_hastighet * -0.1 );
-  tacho_run_forever( MOTOR_BOTH ); 
-}
+
+//rgtjiraegoiarje
