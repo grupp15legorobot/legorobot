@@ -10,10 +10,11 @@
 #define SENSOR_2 IN2
 #define SENSOR_3 IN3
 #define SENSOR_4 IN4
+#define SENSOR_US		IN4
 #define MOTOR_BOTH     ( MOTOR_LEFT | MOTOR_RIGHT ) /* Bitvis ELLER ger att båda motorerna styrs samtidigt */
 int max_hastighet;         /* variabel för max hastighet på motorn */ 
 POOL_T touch_sensor;
-POOL_T sonic_sensor;
+POOL_T us_sensor;
 void move_back();
 void move_straight();
 void move_right();
@@ -36,7 +37,12 @@ int main( void )
   } 
   
   touch_sensor = sensor_search( LEGO_EV3_TOUCH ); // Registrerar en touch sensorpå touchSensor-variabeln
-	sonic_sensor = sensor_search(LEGO_EV3_US);
+  us_sensor = sensor_search( LEGO_EV3_US );
+	us_set_mode_us_dist_cm(us_sensor);
+	int distance;
+	distance=sensor_get_value(0, us_sensor,0);
+	printf("%d", distance);
+
   
   touch_set_mode_touch(touch_sensor); // anger vilken "mode" sensorn skall ha
   /* 
@@ -59,21 +65,15 @@ int main( void )
   tacho_stop( MOTOR_RIGHT );
  
  */ 
-  move_straight();
 
-  printf( "dyinfsdsg...\n" );    
-  us_set_mode_us_dist_cm(LEGO_EV3_US);
-	int us_distance; /* kan heta vad som helst */
-  us_distance = (sensor_get_value0(LEGO_EV3_US, 0));
-  printf("%d",sensor_get_value0(LEGO_EV3_US, 0));
 
-  while(us_distance > 10){
-  printf("%d",sensor_get_value0(LEGO_EV3_US, 0));
-
+  while(distance < 10) {
+  printf("%d",distance);
+     move_straight();
     Sleep( 4000 );
   }//Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
 
-
+  
   /*while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
   move_back();
     */    
