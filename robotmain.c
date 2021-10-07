@@ -65,7 +65,7 @@ int main( void )
   us_set_mode_us_dist_cm(sonic_sensor);
   int	us_distance = (sensor_get_value(0, sonic_sensor, 0))/10; 
   move_straight();
-  while(!sensor_get_value(0, sonic_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
+  while(!us_distance); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
   move_back();
   tacho_stop( MOTOR_BOTH );
   return (0);
