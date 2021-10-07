@@ -52,26 +52,17 @@ int main( void )
   move_right();
         
   Sleep( 4000 );
-    
-  move_right();
-
-  sonic_sensor = sensor_search(LEGO_EV3_US);
-  us_set_mode_us_dist_cm(sonic_sensor);
-  int	us_distance = (sensor_get_value(0, sonic_sensor, 0))/10; 
-  move_straight();
-
-
-  while(!us_distance){
-    move_straight();
-    printf( "*** ( EV3 ) Hello! ***\n" );
-  }
-  move_back();
-  tacho_stop( MOTOR_BOTH );
-        // gojrojgas  
+        
   tacho_stop( MOTOR_RIGHT );
   brick_uninit();
   printf( "dying...\n" );    
 
+  move_straight();
+  while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
+  move_back();
+        
+  Sleep( 4000 );
+  tacho_stop( MOTOR_BOTH );
   return (0);
 }
 
