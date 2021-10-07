@@ -38,7 +38,7 @@ int main( void )
   touch_sensor = sensor_search( LEGO_EV3_TOUCH ); // Registrerar en touch sensorpå touchSensor-variabeln
   touch_set_mode_touch(touch_sensor); // anger vilken "mode" sensorn skall ha
   move_straight();
- /* Sleep( 1000 );
+  Sleep( 1000 );
         
   tacho_stop( MOTOR_BOTH );
   move_back();
@@ -52,15 +52,6 @@ int main( void )
   move_right();
         
   Sleep( 4000 );
-        
-  tacho_stop( MOTOR_RIGHT );
-  brick_uninit();
-  printf( "dying...\n" );    
-  sonic_sensor = sensor_search(LEGO_EV3_US);
-	us_set_mode_us_dist_cm(sonic_sensor);
-	int us_distance; 
-	us_distance = (sensor_get_value(0, sonic_sensor, 0))/10; 
-  */
   sonic_sensor = sensor_search(LEGO_EV3_US);
   us_set_mode_us_dist_cm(sonic_sensor);
   int	us_distance = (sensor_get_value(0, sonic_sensor, 0))/10; 
@@ -68,6 +59,11 @@ int main( void )
   while(!us_distance); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
   move_back();
   tacho_stop( MOTOR_BOTH );
+          
+  tacho_stop( MOTOR_RIGHT );
+  brick_uninit();
+  printf( "dying...\n" );    
+
   return (0);
 }
 
