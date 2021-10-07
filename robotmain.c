@@ -62,9 +62,11 @@ int main( void )
   move_straight();
   us_set_mode_us_dist_cm(sonic_sensor);
 	int us_distance; /* kan heta vad som helst */
-  us_distance = (sensor_get_value(0, sonic_sensor, 0))/10;
-  while(us_distance < 10){
+  us_distance = (sensor_get_value(0, sonic_sensor, 0));
+  while(us_distance < 30){
      move_back();
+
+    Sleep( 4000 );
   }//Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
 
 
