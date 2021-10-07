@@ -65,10 +65,10 @@ int main( void )
   us_set_mode_us_dist_cm(LEGO_EV3_US);
 	int us_distance; /* kan heta vad som helst */
   us_distance = (sensor_get_value0(LEGO_EV3_US, 0));
-  printf("%d",us_distance);
+  printf("%d",sensor_get_value0(LEGO_EV3_US, 0));
 
   while(us_distance > 10){
-  printf("%d",us_distance);
+  printf("%d",sensor_get_value0(LEGO_EV3_US, 0));
 
     Sleep( 4000 );
   }//Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
@@ -77,8 +77,6 @@ int main( void )
   /*while(!sensor_get_value(0, touch_sensor, 0)); //Så länge touch-sensorn inte ärintryckt kommer while-loopen köras
   move_back();
     */    
-  Sleep( 4000 );
-  tacho_stop( MOTOR_BOTH );
    brick_uninit();
   printf( "dying...\n" );    
   return (0);
