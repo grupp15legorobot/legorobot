@@ -59,7 +59,7 @@ int main( void )
   tacho_stop( MOTOR_BOTH );
           
   brick_uninit();
-  printf( "dying...\n" );    
+  printf( "dyinsddsg...\n" );    
 
   return (0);
 }
